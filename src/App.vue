@@ -1,15 +1,18 @@
 <script>
+import AppHeader from "./components/AppHeader.vue";
+import AppMain from "./components/AppMain.vue";
 export default {
   data() {
-    return {
-      persona: "Simone",
-    };
+    return {};
+  },
+  components: {
+    AppHeader,
+    AppMain,
   },
 };
 </script>
 
 <template>
-  <div class="vh-100 d-flex align-items-center">
-    <h1 class="text-center flex-grow-1">Ciao da VUE3, by {{ persona }}</h1>
-  </div>
+  <AppHeader></AppHeader>
+  <AppMain></AppMain>
 </template>
