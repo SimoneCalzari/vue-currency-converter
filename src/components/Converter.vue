@@ -43,6 +43,10 @@ export default {
           store.value1 = "";
           return;
         }
+        if (store.value2 === 0) {
+          store.value1 = 0;
+          return;
+        }
         try {
           // chiamata per convertire il valore del primo input
           const response = await this.apiConversion(
@@ -61,6 +65,10 @@ export default {
       //   se è nullo il primo, metto a nullo anche il secondo
       if (store.value1 === "") {
         store.value2 = "";
+        return;
+      }
+      if (store.value1 === 0) {
+        store.value2 = 0;
         return;
       }
       try {
