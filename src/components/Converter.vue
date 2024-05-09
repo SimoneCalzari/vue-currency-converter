@@ -47,6 +47,8 @@ export default {
           store.value1 = 0;
           return;
         }
+        // se l input è negativo lo converto in positivo
+        if (store.value2 < 0) store.value2 = -store.value2;
         try {
           // chiamata per convertire il valore del primo input
           const response = await this.apiConversion(
@@ -71,6 +73,8 @@ export default {
         store.value2 = 0;
         return;
       }
+      // se l input è negativo lo converto in positivo
+      if (store.value1 < 0) store.value1 = -store.value1;
       try {
         // chiamata per convertire il valore del secondo input
         const response = await this.apiConversion(
