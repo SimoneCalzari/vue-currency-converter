@@ -8,7 +8,7 @@ export default {
 
 <template>
   <header>
-    <h1 class="text-center bg-success text-white py-3 text-uppercase">
+    <h1 class="text-center bg-success py-3 text-uppercase">
       Vue currency converter
     </h1>
   </header>

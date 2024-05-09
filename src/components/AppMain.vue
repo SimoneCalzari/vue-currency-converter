@@ -11,8 +11,8 @@ export default {
 </script>
 
 <template>
-  <main>
-    <div class="container">
+  <main class="flex-grow-1">
+    <div class="container h-100">
       <Converter></Converter>
     </div>
   </main>

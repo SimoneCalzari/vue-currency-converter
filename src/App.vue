@@ -13,6 +13,8 @@ export default {
 </script>
 
 <template>
-  <AppHeader></AppHeader>
-  <AppMain></AppMain>
+  <div class="vh-100 d-flex flex-column bg-dark">
+    <AppHeader></AppHeader>
+    <AppMain></AppMain>
+  </div>
 </template>
