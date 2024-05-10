@@ -1,5 +1,6 @@
 <script>
 import CurrencyField from "./CurrencyField.vue";
+import Chart from "./Chart.vue";
 import axios from "axios";
 import { store } from "../store";
 import { DateTime } from "luxon";
@@ -12,6 +13,7 @@ export default {
   },
   components: {
     CurrencyField,
+    Chart,
   },
   methods: {
     // funzione che prende tutti i tipo di valuta e li salva in un oggetto nei data di questo componente
@@ -102,6 +104,7 @@ export default {
         );
         //   salvo secondo valore aggiornato
         store.value2 = response.data.rates[store.currency2];
+        this.changeRatesLastMonth();
       } catch (error) {
         console.log(error);
       }
@@ -130,7 +133,7 @@ export default {
       // salvo i dati dopo averli manipolati per semplificarli
       store.ratesLastMonth = this.handlingDatesAndRates(data);
     },
-    // manipolazione dati ricevuti dall'api
+    // manipolazione dati ricevuti dall'api dei ratei dell ultimo mese
     handlingDatesAndRates(obj) {
       const objCopy = { ...obj };
       for (const key in obj) {
@@ -161,9 +164,9 @@ export default {
 </script>
 
 <template>
-  <section class="h-100 d-flex align-items-center">
+  <section>
     <div
-      class="w-50 mx-auto bg-white py-4 px-5 rounded-3 border border-3 border-success"
+      class="w-50 mx-auto bg-white py-3 px-5 rounded-3 border border-3 border-success"
     >
       <p class="fs-3 text-center">
         <span class="fs-1 me-2">{{ formatValue1 }}</span> is equal to
@@ -176,6 +179,7 @@ export default {
         @changeVal="conversionValues"
         @changeCurrency="conversionValuesOnCurrencyChange"
       ></CurrencyField>
+      <Chart></Chart>
     </div>
   </section>
 </template>

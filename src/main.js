@@ -9,4 +9,7 @@ import * as bootstrap from "bootstrap";
 // file start Vue
 import App from "./App.vue";
 
-createApp(App).mount("#app");
+// importo apexcharts
+import VueApexCharts from "vue3-apexcharts";
+
+createApp(App).use(VueApexCharts).mount("#app");

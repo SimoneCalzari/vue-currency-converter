@@ -13,7 +13,7 @@ export default {
 </script>
 
 <template>
-  <div class="vh-100 d-flex flex-column bg-dark">
+  <div class="vh-100 d-flex flex-column bg-dark overflow-hidden">
     <AppHeader></AppHeader>
     <AppMain></AppMain>
   </div>

@@ -11,8 +11,8 @@ export default {
 </script>
 
 <template>
-  <main class="flex-grow-1">
-    <div class="container h-100">
+  <main class="flex-grow-1 overflow-auto py-5">
+    <div class="container">
       <Converter></Converter>
     </div>
   </main>
