@@ -2,6 +2,7 @@
 import CurrencyField from "./CurrencyField.vue";
 import axios from "axios";
 import { store } from "../store";
+import { DateTime } from "luxon";
 export default {
   data() {
     return {
@@ -105,9 +106,42 @@ export default {
         console.log(error);
       }
     },
+    // funzione per avere la data di un mese fa formattata per come la vuole l'api delle currency
+    oneMonthAgo() {
+      const today = DateTime.now();
+      const oneMonthAgo = today.minus({ days: 30 });
+      const oneMonthAgoIso = today.minus({ days: 30 }).toISO().slice(0, 10);
+      return oneMonthAgoIso;
+    },
+    // funzione che prende i ratei dell'ultimo mese e li salva in un oggetto dello store
+    async changeRatesLastMonth() {
+      // chiamata all'endpoint
+      const response = await axios.get(
+        `${store.baseUrlApi}/${this.oneMonthAgo()}..`,
+        {
+          params: {
+            from: store.currency1,
+            to: store.currency2,
+          },
+        }
+      );
+      // dati restituiti che interessano
+      const data = response.data.rates;
+      // salvo i dati dopo averli manipolati per semplificarli
+      store.ratesLastMonth = this.handlingDatesAndRates(data);
+    },
+    // manipolazione dati ricevuti dall'api
+    handlingDatesAndRates(obj) {
+      const objCopy = { ...obj };
+      for (const key in obj) {
+        objCopy[key] = obj[key][store.currency2];
+      }
+      return objCopy;
+    },
   },
   created() {
     this.getCurrencies();
+    this.changeRatesLastMonth();
   },
   computed: {
     formatValue1() {

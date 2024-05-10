@@ -8,4 +8,5 @@ export const store = reactive({
   value2: 1.0732,
   currency1: "EUR",
   currency2: "USD",
+  ratesLastMonth: {},
 });
